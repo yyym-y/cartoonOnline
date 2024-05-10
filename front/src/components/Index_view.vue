@@ -34,6 +34,7 @@ export default {
     color: #333;
     line-height: 60px;
     background-color: #f7f8f9;
+    min-width: 700px;
   }
   .el-aside {
     color: #333;

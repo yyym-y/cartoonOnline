@@ -1,12 +1,10 @@
 <template>
   <div class="video-item">
-    
     <el-image
-      style="width: 192px; height: 250px; border-radius: 4px;"
+      style="width: 100%; border-radius: 4px;"
       :src="coverUrl"
       @click="jumpTo()"
       ></el-image> 
-    <span class="type" @click="jumpTo()">VIP</span>  
     <div class="name" @click="jumpTo()">{{ show_name }}</div>
   </div>
 </template>
@@ -36,18 +34,14 @@ export default {
 
 <style scoped>
 .video-item {
-    width: 192px;
-    height: 276px;
+    width: 15vw;
+    max-width: 270px;
+    min-width: 100px;
+    aspect-ratio: 4/3;
     text-align: center;
     font-size: 16px;
 }
-.type {
-    float: right;
-    width: 30px;
-    transform: translateY(-253px);
-    background-color: yellow;
-}
 .name {
-    width: 192px;
+    width: 15vw;
 }
 </style>

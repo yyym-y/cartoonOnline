@@ -21,7 +21,5 @@ export default {
 <style scoped>
 .total-menu {
     margin-top: 15px;
-    background-color: gray;
-    height: 58vh;
 }
 </style>

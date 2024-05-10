@@ -1,5 +1,5 @@
 <template>
-  <el-carousel height="30vh">
+  <el-carousel height="20vw">
     <el-carousel-item v-for="item in total_carousel_num" :key="item">
       <h3>{{ item }}</h3>
     </el-carousel-item>
