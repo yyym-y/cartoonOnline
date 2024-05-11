@@ -37,7 +37,7 @@ export default {
 .video-item {
     width: 15vw;
     max-width: 270px;
-    min-width: 100px;
+    min-width: 70px;
     aspect-ratio: 4/3;
     text-align: center;
     font-size: 16px;
@@ -46,6 +46,8 @@ export default {
 }
 .name {
     width: 15vw;
+    max-width: 270px;
+    min-width: 70px;
 }
 .imgItem {
     width: 100%; border-radius: 4px;

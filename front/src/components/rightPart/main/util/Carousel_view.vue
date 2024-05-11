@@ -1,22 +1,32 @@
 <template>
   <el-carousel height="20vw">
-    <el-carousel-item v-for="item in total_carousel_num" :key="item">
-      <h3>{{ item }}</h3>
+    <el-carousel-item v-for="(item, index) in carouselList" :key="item + index">
+      <CarouselItem
+        :baseInfo="item"
+      ></CarouselItem>
     </el-carousel-item>
   </el-carousel>
 </template>
 
 <script>
+import CarouselItem from './Carousel_item.vue';
+
 export default {
+  components : {
+    CarouselItem
+  },
   data() {
     return {
-      total_carousel_num : 5
+      carouselList : [
+        {cartoonId : "af1de92", carouselCover : "/carousel/316741e2c0764bf9af20e7606.jpg", cartoonName : "你的名字", cartoonCover : "/cover/a36b94aa82f7488782fac5aed.png", cartoonPermit : "2"},
+        {cartoonId : "af1de92", carouselCover : "/carousel/3a79b2766a654057a9846fc97.jpg", cartoonName : "你的名字", cartoonCover : "/cover/a36b94aa82f7488782fac5aed.png", cartoonPermit : "2"}
+      ]
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
   .el-carousel__item h3 {
     color: #475669;
     font-size: 18px;
