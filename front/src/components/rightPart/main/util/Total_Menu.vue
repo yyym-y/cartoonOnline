@@ -1,9 +1,11 @@
 <template>
   <div class="total-menu">
     <VideoItem
-        :name="'RELEFT'"
-        :coverUrl="'https://www.2rk.cc/video/LUUGv4gBOQ_doUrMYWg0/index.webp'"
-        :videoID="'dadasss'"
+        v-for="(item, index) in itemList"
+        :key="index"
+        :name="item.cartoon_name"
+        :coverUrl="item.cartoon_cover"
+        :videoID="item.cartoon_id"
     ></VideoItem>
   </div>
 </template>
@@ -14,6 +16,21 @@ export default {
     name : "Total_Menu",
     components : {
         VideoItem
+    },
+    data() {
+      return {
+        itemList : []
+      }
+    },
+    mounted() {
+      this.$api.project.getMenu().then((result) => {
+        result = result.data;
+        if(result.code == 0) {
+          this.$message.error('初始化失败');
+          return;
+        }
+        this.itemList = result.data;
+      })
     }
 }
 </script>
