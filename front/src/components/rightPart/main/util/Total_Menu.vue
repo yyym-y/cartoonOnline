@@ -1,11 +1,13 @@
 <template>
   <div class="total-menu">
     <VideoItem
+        class="videoItem"
         v-for="(item, index) in itemList"
         :key="index"
-        :name="item.cartoon_name"
-        :coverUrl="item.cartoon_cover"
-        :videoID="item.cartoon_id"
+        :name="item.cartoonName"
+        :coverUrl="item.cartoonCover"
+        :videoID="item.cartoonId"
+        :type="item.cartoonPermit"
     ></VideoItem>
   </div>
 </template>
@@ -29,7 +31,8 @@ export default {
           this.$message.error('初始化失败');
           return;
         }
-        this.itemList = result.data;
+        this.itemList = result.data
+        // console.log(this.itemList)
       })
     }
 }
@@ -38,5 +41,11 @@ export default {
 <style scoped>
 .total-menu {
     margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.videoItem:last-child {
+  margin-right: auto;
 }
 </style>

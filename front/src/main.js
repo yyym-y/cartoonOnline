@@ -7,6 +7,7 @@ import App from './App.vue'
 import axios from 'axios'
 import api from './util/index.js';
  
+Vue.prototype.$baseURL = "http://127.0.0.1:8888"
 Vue.prototype.$api = api
 Vue.prototype.$axios = axios
 
