@@ -1,10 +1,10 @@
 <template>
   <div class="video-item">
-    <el-image
+    <img
       class="imgItem"
       :src="absUrl"
       @click="jumpTo()"
-      ></el-image> 
+      >
     <div class="name" @click="jumpTo()">{{ show_name }}</div>
   </div>
 </template>
@@ -35,7 +35,7 @@ export default {
 
 <style scoped>
 .video-item {
-    width: 15vw;
+    width: 10em;
     max-width: 270px;
     min-width: 70px;
     aspect-ratio: 4/3;
@@ -43,9 +43,12 @@ export default {
     font-size: 16px;
     margin-right: 5px;
     margin-top:10px;
+    border-width: 1px;
+    border-style: solid !important;
+    border-color: white
 }
 .name {
-    width: 15vw;
+    width: 10em;
     max-width: 270px;
     min-width: 70px;
 }

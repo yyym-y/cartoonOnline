@@ -9,6 +9,7 @@
         :videoID="item.cartoonId"
         :type="item.cartoonPermit"
     ></VideoItem>
+    <i v-for="i in 10" :key="i"></i>
   </div>
 </template>
 
@@ -32,7 +33,6 @@ export default {
           return;
         }
         this.itemList = result.data
-        // console.log(this.itemList)
       })
     }
 }
@@ -45,7 +45,10 @@ export default {
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.videoItem:last-child {
-  margin-right: auto;
+.total-menu > i {
+  width: 10em;
+  max-width: 270px;
+  min-width: 70px;
+  margin-right: 5px;
 }
 </style>

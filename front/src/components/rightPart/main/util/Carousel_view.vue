@@ -1,5 +1,5 @@
 <template>
-  <el-carousel height="20vw">
+  <el-carousel height="24em">
     <el-carousel-item v-for="(item, index) in carouselList" :key="item + index">
       <CarouselItem
         :baseInfo="item"
@@ -19,7 +19,7 @@ export default {
     return {
       carouselList : [
         {cartoonId : "af1de92", carouselCover : "/carousel/316741e2c0764bf9af20e7606.jpg", cartoonName : "你的名字", cartoonCover : "/cover/a36b94aa82f7488782fac5aed.png", cartoonPermit : "2"},
-        {cartoonId : "af1de92", carouselCover : "/carousel/3a79b2766a654057a9846fc97.jpg", cartoonName : "你的名字", cartoonCover : "/cover/a36b94aa82f7488782fac5aed.png", cartoonPermit : "2"}
+        {cartoonId : "32c8841", carouselCover : "/carousel/3a79b2766a654057a9846fc97.jpg", cartoonName : "魔女之旅", cartoonCover : "/cover/19ce48a915394d64b5b3ff47b.png", cartoonPermit : "1"}
       ]
     }
   }
