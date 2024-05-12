@@ -11,7 +11,7 @@
 
 <script>
 export default {
-    props : ["name", "coverUrl", "videoID", "type"],
+    props : ["baseInfo"],
     data() {
         return {
             show_name : "",
@@ -20,15 +20,15 @@ export default {
     },
     methods : {
         jumpTo() {
-            alert("jump to " + this.videoID);
+            alert("jump to " + this.baseInfo.cartoonId);
         }
     },
     mounted() {
-        if (this.name.length > 10) {
-            this.show_name = this.name.substring(0, 15);
+        if (this.baseInfo.cartoonName.length > 10) {
+            this.show_name = this.baseInfo.cartoonName.substring(0, 15);
             this.show_name += "..."
-        } else this.show_name = this.name
-        this.absUrl = this.$baseURL + this.coverUrl;
+        } else this.show_name = this.baseInfo.cartoonName
+        this.absUrl = this.$baseURL + this.baseInfo.cartoonCover;
     }
 }
 </script>

@@ -10,7 +10,10 @@ public class ResourcesConfig implements WebMvcConfigurer
 {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/cover/**").addResourceLocations("file:/E:/sources/cartoon_online/cover/");
+        registry.addResourceHandler("/cover/**")
+                .addResourceLocations("file:/E:/sources/cartoon_online/cover/");
+        registry.addResourceHandler("/carousel/**")
+                .addResourceLocations("file:/E:/sources/cartoon_online/carousel/");
     }
 
 }

@@ -17,11 +17,18 @@ export default {
   },
   data() {
     return {
-      carouselList : [
-        {cartoonId : "af1de92", carouselCover : "/carousel/316741e2c0764bf9af20e7606.jpg", cartoonName : "你的名字", cartoonCover : "/cover/a36b94aa82f7488782fac5aed.png", cartoonPermit : "2"},
-        {cartoonId : "32c8841", carouselCover : "/carousel/3a79b2766a654057a9846fc97.jpg", cartoonName : "魔女之旅", cartoonCover : "/cover/19ce48a915394d64b5b3ff47b.png", cartoonPermit : "1"}
-      ]
+      carouselList : []
     }
+  },
+  mounted() {
+    this.$api.project.getCarousel().then((result) => {
+      result = result.data;
+      if(result.code == 0) {
+        this.$message.error('初始化失败');
+        return;
+      }
+      this.carouselList = result.data;
+    })
   }
 }
 </script>

@@ -18,3 +18,10 @@ INSERT INTO cartoon VALUES("940e098","鬼灭之刃","/cover/d58409e186094c3da1b61ade
 INSERT INTO cartoon VALUES("7f646d5","青春猪头少年不会梦到兔女郎学姐-剧场版","/cover/e76480c151634c0483baf3954.png",1);
 
 SELECT * FROM Cartoon;
+
+INSERT INTO carousel VALUES("32c8841", "/carousel/3a79b2766a654057a9846fc97.jpg");
+INSERT INTO carousel VALUES("4dc2dd8", "/carousel/37b1699f119e430aa99588b2f.jpg");
+INSERT INTO carousel VALUES("e28e44d", "/carousel/4479b599891e4ce88c447a0aa.jpg");
+INSERT INTO carousel VALUES("af1de92", "/carousel/316741e2c0764bf9af20e7606.jpg");
+
+SELECT * FROM carousel;

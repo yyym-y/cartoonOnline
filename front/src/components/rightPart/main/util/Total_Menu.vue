@@ -4,10 +4,7 @@
         class="videoItem"
         v-for="(item, index) in itemList"
         :key="index"
-        :name="item.cartoonName"
-        :coverUrl="item.cartoonCover"
-        :videoID="item.cartoonId"
-        :type="item.cartoonPermit"
+        :baseInfo="item"
     ></VideoItem>
     <i v-for="i in 10" :key="i"></i>
   </div>

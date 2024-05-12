@@ -1,16 +1,8 @@
 <template>
   <div>
-    <!-- <img
-        class="carousel-img-item"
-        :src="absUrl"
-        style="object-fit: contain;"
-        > -->
     <VideoItem
         class="carousel-video-item"
-        :name="baseInfo.cartoonName"
-        :coverUrl="baseInfo.cartoonCover"
-        :videoId="baseInfo.cartoonId"
-        :type="baseInfo.cartoonPermit"></VideoItem>
+        :baseInfo="baseInfo.cartoon"></VideoItem>
     <img
         class="carousel-img-item"
         :src="absUrl"
