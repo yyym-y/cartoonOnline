@@ -14,6 +14,8 @@ public class ResourcesConfig implements WebMvcConfigurer
                 .addResourceLocations("file:/E:/sources/cartoon_online/cover/");
         registry.addResourceHandler("/carousel/**")
                 .addResourceLocations("file:/E:/sources/cartoon_online/carousel/");
+        registry.addResourceHandler("/video/**")
+                .addResourceLocations("file:/E:/sources/cartoon_online/video/");
     }
 
 }
