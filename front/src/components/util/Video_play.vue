@@ -29,7 +29,6 @@
       methods: {
         changeSource(url) {
             this.playerOptions['sources'][0]['src'] = url
-            console.log("-----")
         }
       }
   }

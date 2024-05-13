@@ -42,6 +42,9 @@ export default {
         result = result.data
         this.total_num = result.num
         this.m3u8List = result.infos
+        this.m3u8List.sort(function(a,b){
+          return a.num - b.num;
+        })
         this.sourceUrl = this.getUrl(this.cartoonId, 1, result.infos[0].m3u8Url)
         console.log(this.sourceUrl)
         this.$refs.videoInfo.changeSource(this.sourceUrl);
