@@ -7,6 +7,7 @@
         class="carousel-img-item"
         :src="absUrl"
         style="object-fit: cover;"
+        @click="jumpTo()"
         >
   </div>
   
@@ -29,6 +30,14 @@ export default {
     mounted() {
         this.absUrl = this.$baseURL + this.baseInfo.carouselCover
         console.log(this.absUrl)
+    },
+    methods: {
+        jumpTo() {
+            this.$router.push({ name:"video", query:{ 
+                cartoonId : this.baseInfo.cartoon.cartoonId,
+                cartoonName : this.baseInfo.cartoon.cartoonName
+            } })
+        }
     }
 }
 </script>

@@ -6,9 +6,9 @@
       @open="handleOpen"
       @close="handleClose">
 
-      <el-menu-item index="1">
+      <el-menu-item index="1" @click="returnHome()">
         <i class="el-icon-menu"></i>
-        <span slot="title">首页</span>
+        <span slot="title" >首页</span>
       </el-menu-item>
 
       <el-menu-item index="2">
@@ -33,7 +33,10 @@ export default {
     },
     handleClose (key, keyPath) {
       console.log(key, keyPath);
+    },
+    returnHome() {
+      this.$router.push({name:"home"})
     }
-  }
+  },
 }
 </script>

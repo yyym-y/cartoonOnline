@@ -35,7 +35,7 @@ CREATE TABLE cartoon_episode(
 CREATE TABLE m3u8_info(
     cartoon_id VARCHAR(7) NOT NULL COMMENT "关联cartton表的标识",
     num INT NOT NULL COMMENT "第几集",
-    m3u8Url VARCHAR(50) COMMENT "m3u8文件地址",
+    m3u8_url VARCHAR(50) COMMENT "m3u8文件地址",
     FOREIGN KEY (cartoon_id) REFERENCES cartoon (cartoon_id)
 ) COMMENT "标识m3u8文件地址";
 

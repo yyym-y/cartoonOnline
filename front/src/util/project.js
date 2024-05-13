@@ -1,7 +1,8 @@
 import request from './request';
 
+
 export default {
-    getMenu, getCarousel
+    getMenu, getCarousel, getVideo
 }
 
 export function getMenu() {
@@ -15,5 +16,13 @@ export function getCarousel() {
     return request({
         methods:'GET',
         url:'/index/getCarousel',
+    })
+}
+
+export function getVideo(params) {
+    return request({
+        methods:'GET',
+        url:'/play/getVideo',
+        params: params
     })
 }

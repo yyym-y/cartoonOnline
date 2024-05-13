@@ -20,7 +20,10 @@ export default {
     },
     methods : {
         jumpTo() {
-            this.$router.push({ name:"video", query:{ cartoonId : this.baseInfo.cartoonId} })
+            this.$router.push({ name:"video", query:{ 
+                cartoonId : this.baseInfo.cartoonId,
+                cartoonName : this.baseInfo.cartoonName
+            } })
         }
     },
     mounted() {

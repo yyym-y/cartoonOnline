@@ -6,7 +6,7 @@
         :key="index"
         :baseInfo="item"
     ></VideoItem>
-    <i v-for="i in 10" :key="i"></i>
+    <i v-for="i in 10" :key="i + '<i>'"></i>
   </div>
 </template>
 
