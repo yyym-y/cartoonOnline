@@ -1,21 +1,21 @@
 DELETE FROM cartoon;
-INSERT INTO cartoon VALUES("53c3270","Çà´ºÖíÍ·ÉÙÄê²»»áÃÎµ½ÍÃÅ®ÀÉÑ§½ã","/cover/0a9235ad5de54a9cb6c946e44.png",2);
+INSERT INTO cartoon VALUES("53c3270","ï¿½à´ºï¿½ï¿½Í·ï¿½ï¿½ï¿½ê²»ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½Å®ï¿½ï¿½Ñ§ï¿½ï¿½","/cover/0a9235ad5de54a9cb6c946e44.png",2);
 
-INSERT INTO cartoon VALUES("32c8841","Ä§Å®Ö®ÂÃ","/cover/19ce48a915394d64b5b3ff47b.png",1);
+INSERT INTO cartoon VALUES("32c8841","Ä§Å®Ö®ï¿½ï¿½","/cover/19ce48a915394d64b5b3ff47b.png",1);
 
-INSERT INTO cartoon VALUES("5c01c97","Ó©»ðÖ®É­","/cover/708b537cfb3140879739a1831.png",1);
+INSERT INTO cartoon VALUES("5c01c97","Ó©ï¿½ï¿½Ö®É­","/cover/708b537cfb3140879739a1831.png",1);
 
-INSERT INTO cartoon VALUES("4dc2dd8","ÔáËÍµÄÜ½ÀòÁ«","/cover/9f0f4feed17f4e279cb121213.png",0);
+INSERT INTO cartoon VALUES("4dc2dd8","ï¿½ï¿½ï¿½Íµï¿½Ü½ï¿½ï¿½ï¿½ï¿½","/cover/9f0f4feed17f4e279cb121213.png",0);
 
-INSERT INTO cartoon VALUES("af1de92","ÄãµÄÃû×Ö","/cover/a36b94aa82f7488782fac5aed.png",2);
+INSERT INTO cartoon VALUES("af1de92","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½","/cover/a36b94aa82f7488782fac5aed.png",2);
 
-INSERT INTO cartoon VALUES("e28e44d","ÃëËÙÎåÀåÃ×","/cover/b90a5ae8359a42d8a3516ca56.png",2);
+INSERT INTO cartoon VALUES("e28e44d","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½","/cover/b90a5ae8359a42d8a3516ca56.png",2);
 
 INSERT INTO cartoon VALUES("0bdaac4","ReLIFE","/cover/d397768d7c3c444ca6115ec67.png",0);
 
-INSERT INTO cartoon VALUES("940e098","¹íÃðÖ®ÈÐ","/cover/d58409e186094c3da1b61adef.png",2);
+INSERT INTO cartoon VALUES("940e098","ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½","/cover/d58409e186094c3da1b61adef.png",2);
 
-INSERT INTO cartoon VALUES("7f646d5","Çà´ºÖíÍ·ÉÙÄê²»»áÃÎµ½ÍÃÅ®ÀÉÑ§½ã-¾ç³¡°æ","/cover/e76480c151634c0483baf3954.png",1);
+INSERT INTO cartoon VALUES("7f646d5","ï¿½à´ºï¿½ï¿½Í·ï¿½ï¿½ï¿½ê²»ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½Å®ï¿½ï¿½Ñ§ï¿½ï¿½-ï¿½ç³¡ï¿½ï¿½","/cover/e76480c151634c0483baf3954.png",1);
 
 SELECT * FROM Cartoon;
 
@@ -25,3 +25,17 @@ INSERT INTO carousel VALUES("e28e44d", "/carousel/4479b599891e4ce88c447a0aa.jpg"
 INSERT INTO carousel VALUES("af1de92", "/carousel/316741e2c0764bf9af20e7606.jpg");
 
 SELECT * FROM carousel;
+
+INSERT INTO cartoon_episode VALUE("53c3270", 13);
+INSERT INTO cartoon_episode VALUE("32c8841", 8);
+INSERT INTO cartoon_episode VALUE("5c01c97", 1);
+INSERT INTO cartoon_episode VALUE("4dc2dd8", 28);
+INSERT INTO cartoon_episode VALUE("af1de92", 1);
+INSERT INTO cartoon_episode VALUE("e28e44d", 1);
+INSERT INTO cartoon_episode VALUE("0bdaac4", 3);
+INSERT INTO cartoon_episode VALUE("940e098", 2);
+INSERT INTO cartoon_episode VALUE("7f646d5", 1);
+
+SELECT * FROM cartoon_episode;
+
+SELECT * FROM m3u8_info;

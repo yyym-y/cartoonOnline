@@ -7,6 +7,8 @@ USE cartoon_online;
 DROP TABLE IF EXISTS carousel;
 DROP TABLE IF EXISTS cartoon;
 
+DROP TABLE IF EXISTS m3u8_info;
+
 # cartoon( cartoon_id[主键], cartoon_name, cartoon_cover, cartoon_permit)
 CREATE TABLE cartoon(
     cartoon_id VARCHAR(7) UNIQUE PRIMARY KEY NOT NULL COMMENT "番剧的唯一标识",
@@ -21,5 +23,22 @@ CREATE TABLE carousel(
     carousel_cover VARCHAR(50) COMMENT "走马灯展示的图片",
     FOREIGN KEY (cartoon_id) REFERENCES cartoon (cartoon_id)
 ) COMMENT "走马灯展示信息";
+
+# cartoon_episode( cartoon_id[外键], num )
+CREATE TABLE cartoon_episode(
+    cartoon_id VARCHAR(7) UNIQUE NOT NULL COMMENT "关联cartton表的标识",
+    num INT NOT NULL COMMENT "一共有多少集",
+    FOREIGN KEY (cartoon_id) REFERENCES cartoon (cartoon_id)
+) COMMENT "集数信息";
+
+# m3u8_info( cartoon_id[外键], num, m3u8Url )
+CREATE TABLE m3u8_info(
+    cartoon_id VARCHAR(7) NOT NULL COMMENT "关联cartton表的标识",
+    num INT NOT NULL COMMENT "第几集",
+    m3u8Url VARCHAR(50) COMMENT "m3u8文件地址",
+    FOREIGN KEY (cartoon_id) REFERENCES cartoon (cartoon_id)
+) COMMENT "标识m3u8文件地址";
+
+
 
 SHOW TABLES;
