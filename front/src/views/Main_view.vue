@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import Carousel from './util/Carousel_view.vue'
+import Carousel from '../components/rightPart/main/Carousel_view.vue'
 import TitleSub from '@/components/util/Title_sub'
-import TotalMenu from './util/Total_Menu.vue'
+import TotalMenu from '../components/rightPart/main/Total_Menu.vue'
 export default {
     name : "Main_view",
     components : {

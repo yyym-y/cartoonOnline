@@ -9,7 +9,7 @@
               <HeaderView></HeaderView>
             </el-header>
             <el-main>
-              <MainView></MainView>
+              <router-view></router-view>
             </el-main>
         </el-container>
     </el-container>
@@ -18,13 +18,11 @@
 
 <script>
 import LeftView from './leftpart/Left_view'
-import MainView from './rightPart/main/Main_view.vue'
 import HeaderView from './rightPart/header/Header_view'
-
 export default {
     name : "Index_view",
     components : {
-        LeftView, HeaderView, MainView
+        LeftView, HeaderView
     }
 }
 </script>

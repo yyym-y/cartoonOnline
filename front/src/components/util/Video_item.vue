@@ -20,7 +20,7 @@ export default {
     },
     methods : {
         jumpTo() {
-            alert("jump to " + this.baseInfo.cartoonId);
+            this.$router.push({ name:"video", query:{ cartoonId : this.baseInfo.cartoonId} })
         }
     },
     mounted() {
