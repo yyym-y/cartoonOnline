@@ -6,7 +6,15 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 import axios from 'axios'
 import api from './util/index.js';
+require('vue-video-player/src/custom-theme.css')
+require('video.js/dist/video-js.css')
+import VideoPlayer from 'vue-video-player'
+import hls from "videojs-contrib-hls"; 
+import VueRouter from 'vue-router'
+import router from "./router/index"
  
+Vue.use(VideoPlayer)
+Vue.use(hls);
 Vue.prototype.$baseURL = "http://10.252.114.70:8888"
 Vue.prototype.$api = api
 Vue.prototype.$axios = axios
@@ -14,10 +22,12 @@ Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
+Vue.use(VueRouter)
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  router
 })
