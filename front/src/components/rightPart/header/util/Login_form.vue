@@ -55,7 +55,9 @@ export default {
                     return;
                 }
                 localStorage.setItem('jwt', result.jwt);
+                console.log(result)
                 this.$uid = result.uid;
+                this.$message.success("登录成功")
             }).catch(err => {
                 this.$message.error("登录请求失败[服务器异常]")
             })

@@ -42,7 +42,7 @@ CREATE TABLE m3u8_info(
 # user_info( uid[主键], username, password, email, type )
 CREATE TABLE user_info(
     uid VARCHAR(7) NOT NULL COMMENT "用户唯一标识",
-    username VARCHAR(30) NOT NULL COMMMENT "用户名",
+    username VARCHAR(30) NOT NULL COMMENT "用户名",
     password VARCHAR(30) NOT NULL COMMENT "密码",
     email VARCHAR(30) NOT NULL UNIQUE COMMENT "邮箱",
     type INT NOT NULL COMMENT "用户级别 0-管理员/1-普通用户/2-VIP用户"
@@ -56,3 +56,8 @@ CREATE TABLE code_tem(
 ) COMMENT "验证码临时表";
 
 SHOW TABLES;
+
+
+INSERT INTO user_info VALUES("d981034", "admin", "123456", "3109778990@qq.com", 0);
+
+SELECT * FROM user_info;
