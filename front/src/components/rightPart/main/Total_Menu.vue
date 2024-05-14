@@ -26,10 +26,12 @@ export default {
       this.$api.project.getMenu().then((result) => {
         result = result.data;
         if(result.code == 0) {
-          this.$message.error('初始化失败');
+          this.$message.error('服务器连接成功,走马灯数据请求失败');
           return;
         }
         this.itemList = result.data
+      }).catch(err => {
+        this.$message.error('服务器连接失败...');
       })
     }
 }

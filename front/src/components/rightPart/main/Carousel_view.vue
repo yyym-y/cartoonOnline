@@ -24,10 +24,12 @@ export default {
     this.$api.project.getCarousel().then((result) => {
       result = result.data;
       if(result.code == 0) {
-        this.$message.error('初始化失败');
+        this.$message.error('服务器连接成功,列表数据请求失败');
         return;
       }
       this.carouselList = result.data;
+    }).catch(err => {
+      this.$message.error('服务器连接失败...');
     })
   }
 }

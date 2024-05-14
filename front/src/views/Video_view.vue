@@ -1,12 +1,17 @@
 <template>
   <div>
-    <div style="width: 100px; height: 60px; "></div>
+    <div style="width: 100px; height: 40px; "></div>
     <TitleSub :msg="cartoonName"></TitleSub>
     <div style="width: 100px; height: 20px; "></div>
     <VideoPlay :source="sourceUrl" ref="videoInfo"></VideoPlay>
     <TitleSub :msg="'集数选择'"></TitleSub>
     <el-button  v-for="i in total_num" :key="'button' + i" plain
       class="choise-btn" @click="choiceEpisode(i)">{{ i }}</el-button>
+    <TitleSub :msg="'简介'"></TitleSub>
+    <IntroView :baseInfo="{
+      'cartoonId' : cartoonId, 
+      'cartoonName' : cartoonName,
+      'cartoonCover' : cartoonCover}"></IntroView>
   </div>
 </template>
 
@@ -14,22 +19,25 @@
 import VideoPlay from '@/components/util/Video_play.vue';
 import TitleSub from '@/components/util/Title_sub.vue';
 import PlayBotton from '@/components/rightPart/main/Play_bottom.vue'
+import IntroView from '@/components/rightPart/main/Intro_item.vue'
 export default {
     components : {
-        VideoPlay, TitleSub, PlayBotton
+        VideoPlay, TitleSub, PlayBotton, IntroView
     },
     data() {
         return {
           cartoonId : "",
           cartoonName : "",
+          cartoonCover : "",
           total_num : 0,
           m3u8List : [],
           sourceUrl : ""
         }
     },
-    mounted() {
+    created() {
       this.cartoonId = this.$route.query.cartoonId
       this.cartoonName = this.$route.query.cartoonName
+      this.cartoonCover = this.$route.query.cartoonCover
       console.log(this.cartoonId)
       this.$api.project.getVideo({cartoonId : this.cartoonId})
           .then((result) => {

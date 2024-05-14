@@ -35,7 +35,8 @@ export default {
         jumpTo() {
             this.$router.push({ name:"video", query:{ 
                 cartoonId : this.baseInfo.cartoon.cartoonId,
-                cartoonName : this.baseInfo.cartoon.cartoonName
+                cartoonName : this.baseInfo.cartoon.cartoonName,
+                cartoonCover : this.baseInfo.cartoon.cartoonCover
             } })
         }
     }

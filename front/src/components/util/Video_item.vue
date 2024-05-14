@@ -11,7 +11,10 @@
 
 <script>
 export default {
-    props : ["baseInfo"],
+    props : {"baseInfo" : Object, "clickable" : {
+        type: Boolean,
+        default : true
+    }},
     data() {
         return {
             show_name : "",
@@ -20,9 +23,11 @@ export default {
     },
     methods : {
         jumpTo() {
+            if (! this.clickable) return;
             this.$router.push({ name:"video", query:{ 
                 cartoonId : this.baseInfo.cartoonId,
-                cartoonName : this.baseInfo.cartoonName
+                cartoonName : this.baseInfo.cartoonName,
+                cartoonCover : this.baseInfo.cartoonCover
             } })
         }
     },

@@ -35,7 +35,7 @@ export default {
       console.log(key, keyPath);
     },
     returnHome() {
-      this.$router.push({name:"home"})
+      this.$router.push({name:"home"}).catch(err => {})
     }
   },
 }
