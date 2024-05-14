@@ -45,7 +45,20 @@ export default {
     },
     methods: {
         submitForm() {
-            this.$message.success("提交成功")
+            this.$api.project.logIn({
+                uid : this.fromInfo.uid,
+                password : this.fromInfo.password
+            }).then(result => {
+                result = result.data;
+                if (result.code == 0) {
+                    this.$message.error("账户名或密码错误")
+                    return;
+                }
+                localStorage.setItem('jwt', result.jwt);
+                this.$uid = result.uid;
+            }).catch(err => {
+                this.$message.error("登录请求失败[服务器异常]")
+            })
         },
     }
 }

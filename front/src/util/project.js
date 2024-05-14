@@ -2,7 +2,8 @@ import request from './request';
 
 
 export default {
-    getMenu, getCarousel, getVideo
+    getMenu, getCarousel, getVideo,
+    logIn, regester, confirmCode, refind
 }
 
 export function getMenu() {
@@ -26,3 +27,36 @@ export function getVideo(params) {
         params: params
     })
 }
+
+export function logIn(params) {
+    return request({
+        methods:'GET',
+        url:'/user/logIn',
+        params: params
+    })
+}
+
+export function regester(params) {
+    return request({
+        methods:'GET',
+        url:'/user/regester',
+        params: params
+    })
+}
+
+export function confirmCode(params) {
+    return request({
+        methods:'GET',
+        url:'/user/confirmCode',
+        params: params
+    })
+}
+
+export function refind(params) {
+    return request({
+        methods:'GET',
+        url:'/user/refind',
+        params: params
+    })
+}
+

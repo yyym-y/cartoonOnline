@@ -34,10 +34,32 @@ export default {
     },
     methods : {
         sendCode() {
-
+            this.$api.project.confirmCode()
+            .then(result => {
+                result = result.data;
+                if(result.code == 0) {
+                    this.$message.error("验证码发送错误: " + result.msg)
+                    return;
+                }
+                this.$message.success("验证码发送成功")
+            }).catch(err => {
+                this.$message.error("验证码发送错误[服务器异常]")
+            })
         },
         submitForm() {
-
+            this.$api.project.refind(this.refindInfo)
+            .then(result => {
+                result = result.data;
+                if(result.code == 0) {
+                    if(result.msg == "confirm code wrong")
+                        this.$message.error("验证码错误")
+                    if(result.msg == "confirm code Time Out")
+                        this.$message.error("验证码过期")
+                    return;
+                }
+            }).catch(err => {
+                this.$message.error("找回密码错误[服务器异常]")
+            })
         }
     }
 }
