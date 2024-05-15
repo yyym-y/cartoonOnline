@@ -1,4 +1,4 @@
-package org.yyym.back.util;
+package org.yyym.back.util.helper;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

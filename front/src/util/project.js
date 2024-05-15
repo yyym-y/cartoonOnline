@@ -39,7 +39,7 @@ export function logIn(params) {
 export function regester(params) {
     return request({
         methods:'GET',
-        url:'/user/regester',
+        url:'/user/register',
         params: params
     })
 }

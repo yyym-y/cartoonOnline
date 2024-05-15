@@ -1,4 +1,4 @@
-package org.yyym.back.util;
+package org.yyym.back.util.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;

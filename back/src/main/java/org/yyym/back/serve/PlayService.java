@@ -2,9 +2,9 @@ package org.yyym.back.serve;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.yyym.back.mapper.EpisodeMapper;
-import org.yyym.back.util.Episode;
-import org.yyym.back.util.Result;
+import org.yyym.back.mapper.multi.EpisodeMapper;
+import org.yyym.back.util.entity.Episode;
+import org.yyym.back.util.helper.Result;
 
 @Service
 public class PlayService {

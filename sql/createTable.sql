@@ -52,12 +52,14 @@ CREATE TABLE user_info(
 CREATE TABLE code_tem(
     email VARCHAR(30) NOT NULL UNIQUE COMMENT "邮箱",
     code VARCHAR(7) NOT NULL COMMENT "验证码",
-    time TIME NOT NULL COMMENT "创造的时间"
+    time DateTime NOT NULL COMMENT "创造的时间"
 ) COMMENT "验证码临时表";
 
 SHOW TABLES;
+DROP TABLE code_tem;
 
 
 INSERT INTO user_info VALUES("d981034", "admin", "123456", "3109778990@qq.com", 0);
 
 SELECT * FROM user_info;
+SELECT * FROM code_tem;

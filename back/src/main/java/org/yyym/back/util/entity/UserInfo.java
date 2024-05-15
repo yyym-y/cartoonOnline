@@ -1,4 +1,4 @@
-package org.yyym.back.util;
+package org.yyym.back.util.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;

@@ -15,7 +15,7 @@ import router from "./router/index"
  
 Vue.use(VideoPlayer)
 Vue.use(hls);
-Vue.prototype.$baseURL = "http://10.252.115.35:8888"
+Vue.prototype.$baseURL = "http://10.253.49.20:8888"
 Vue.prototype.$uid = ""
 Vue.prototype.$api = api
 Vue.prototype.$axios = axios

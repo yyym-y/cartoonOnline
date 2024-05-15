@@ -2,9 +2,9 @@ package org.yyym.back.serve;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.yyym.back.mapper.CarouselMapper;
+import org.yyym.back.mapper.multi.CarouselMapper;
 import org.yyym.back.mapper.CartoonMapper;
-import org.yyym.back.util.Result;
+import org.yyym.back.util.helper.Result;
 
 @Service
 public class IndexService {

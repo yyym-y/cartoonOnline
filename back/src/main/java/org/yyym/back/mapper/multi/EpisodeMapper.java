@@ -1,8 +1,8 @@
-package org.yyym.back.mapper;
+package org.yyym.back.mapper.multi;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.*;
-import org.yyym.back.util.Episode;
+import org.yyym.back.util.entity.Episode;
 
 @Mapper
 public interface EpisodeMapper extends BaseMapper<Episode> {

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.yyym.back.serve.IndexService;
-import org.yyym.back.util.Result;
+import org.yyym.back.util.helper.Result;
 
 @RestController
 @CrossOrigin(originPatterns = "*",allowCredentials = "true")

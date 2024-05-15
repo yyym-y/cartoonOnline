@@ -1,8 +1,8 @@
-package org.yyym.back.mapper;
+package org.yyym.back.mapper.multi;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.*;
-import org.yyym.back.util.Carousel;
+import org.yyym.back.util.entity.Carousel;
 
 import java.util.List;
 

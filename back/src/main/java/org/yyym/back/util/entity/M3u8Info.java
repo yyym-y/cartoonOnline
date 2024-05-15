@@ -1,4 +1,4 @@
-package org.yyym.back.util;
+package org.yyym.back.util.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -7,13 +7,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@TableName("cartoon")
-public class Cartoon {
+@NoArgsConstructor
+@TableName("m3u8_info")
+public class M3u8Info {
     @TableId("cartoon_id")
     public String cartoonId;
-    public String cartoonName;
-    public String cartoonCover;
-    public Integer cartoonPermit;
+    public Integer num;
+    public String m3u8Url;
 }

@@ -59,7 +59,7 @@ export default {
             })
         },
         sendCode() {
-            this.$api.project.confirmCode()
+            this.$api.project.confirmCode({email : this.registerInfo.email})
             .then(result => {
                 result = result.data;
                 if(result.code == 0) {
