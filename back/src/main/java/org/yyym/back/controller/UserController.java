@@ -1,10 +1,12 @@
 package org.yyym.back.controller;
 
+import com.sun.tools.jconsole.JConsoleContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.yyym.back.serve.UserService;
+import org.yyym.back.util.entity.RefindInfo;
 import org.yyym.back.util.entity.RegisterInfo;
 import org.yyym.back.util.helper.Result;
 
@@ -26,5 +28,13 @@ public class UserController {
     @RequestMapping("/register")
     public Result register(RegisterInfo registerInfo) {
         return userService.register(registerInfo);
+    }
+    @RequestMapping("/refind")
+    public Result refind(RefindInfo refindInfo) {
+        return userService.refind(refindInfo);
+    }
+    @RequestMapping("/checkJwt")
+    public Result checkJwt(String jwt) {
+        return userService.checkJwt(jwt);
     }
 }

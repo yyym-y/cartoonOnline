@@ -19,10 +19,31 @@
 <script>
 import LeftView from './leftpart/Left_view'
 import HeaderView from './rightPart/header/Header_view'
+import { EventBus } from '@/bus/Event_Bus'
 export default {
     name : "Index_view",
     components : {
         LeftView, HeaderView
+    },
+    mounted() {
+      try{
+        const jwt = localStorage.getItem("jwt");
+        this.$api.project.checkJwt({jwt : jwt})
+          .then(result => {
+          result = result.data;
+          if(result.code == 1) {
+            this.$message.success(localStorage.getItem("username") + ", 欢迎回来~");
+            EventBus.$emit("local_user", {
+              username : localStorage.getItem("username"),
+              email : localStorage.getItem("email"),
+              uid : localStorage.getItem("uid"),
+              type : localStorage.getItem("type")
+            });
+          }
+        }).catch(err => {
+          this.$message.error("Jwt 令牌失效， 请重新登陆")
+        })
+      } catch (e) { console.log("jwt get wrong") }
     }
 }
 </script>

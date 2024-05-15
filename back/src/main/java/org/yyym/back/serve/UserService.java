@@ -1,14 +1,14 @@
 package org.yyym.back.serve;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.yyym.back.mapper.ConfirmCodeMapper;
 import org.yyym.back.mapper.UserInfoMapper;
 import org.yyym.back.util.entity.ConfirmCode;
+import org.yyym.back.util.entity.RefindInfo;
 import org.yyym.back.util.entity.RegisterInfo;
 import org.yyym.back.util.helper.Jwt;
 import org.yyym.back.util.helper.Random;
@@ -18,6 +18,7 @@ import org.yyym.back.util.helper.SendEmail;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -33,17 +34,19 @@ public class UserService {
         UserInfo res;
         if ( uid.contains("@") ) {
             res = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
+                    .select(List.of("uid", "username", "email", "type"))
                     .eq("email", uid)
                     .eq("password", password));
         } else {
             res = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
+                    .select(List.of("uid", "username", "email", "type"))
                     .eq("username", uid)
                     .eq("password", password));
         }
         if (res == null )
             return Result.error("uid or passwd wrong");
         Map<String, Object> returnInfo = new HashMap<>();
-        returnInfo.put("uid", res.getUid());
+        returnInfo.put("user", res);
         returnInfo.put("jwt", Jwt.getJwt(
                 returnInfo, 300, "yyym"
         ));
@@ -79,7 +82,24 @@ public class UserService {
         infos.put("jwt", Jwt.getJwt(infos, 300, "yyym"));
         return Result.success(infos);
     }
-    
+
+    public Result refind(RefindInfo refindInfo) {
+        if(!refindInfo.getPassword().equals(refindInfo.getRe_password()))
+            return Result.error("re_passwd != passwd");
+        Result result = checkCode(refindInfo.getEmail(), refindInfo.getConfirmCode());
+        if(result.getCode() == 0)
+            return result;
+        int res = userInfoMapper.update(new UpdateWrapper<UserInfo>()
+                .eq("email", refindInfo.getEmail())
+                .set("password", refindInfo.getPassword()));
+        if(res == 0)
+            return Result.error("email not find");
+        return Result.success();
+    }
+
+    public Result checkJwt(String jwt) {
+        return Jwt.decodeJwt(jwt, "yyym");
+    }
 
     private void clearCode() {
         confirmCodeMapper.delete(new QueryWrapper<ConfirmCode>()

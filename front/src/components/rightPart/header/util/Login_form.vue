@@ -54,10 +54,19 @@ export default {
                     this.$message.error("账户名或密码错误")
                     return;
                 }
-                localStorage.setItem('jwt', result.jwt);
+                result = result.data
                 console.log(result)
-                this.$uid = result.uid;
+                localStorage.setItem("jwt", result.jwt);
+                localStorage.setItem("username", result.user.username);
+                console.log(localStorage.getItem("username"));
+                localStorage.setItem("uid", result.user.uid);
+                localStorage.setItem("password", result.user.password);
+                localStorage.setItem("email", result.user.email);
+                localStorage.setItem("type", result.user.type);
                 this.$message.success("登录成功")
+                setTimeout(function(){
+                    top.document.location.reload();
+                }, 700);
             }).catch(err => {
                 this.$message.error("登录请求失败[服务器异常]")
             })

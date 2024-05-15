@@ -54,6 +54,9 @@ export default {
                 localStorage.setItem('jwt', result.jwt);
                 this.$uid = result.uid;
                 this.$message.success("注册成功")
+                setTimeout(function(){
+                    top.document.location.reload();
+                }, 700);
             }).catch(err => {
                 this.$message.error("注册请求失败[服务器异常]")
             })

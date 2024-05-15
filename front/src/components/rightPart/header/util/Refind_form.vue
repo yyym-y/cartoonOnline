@@ -34,7 +34,7 @@ export default {
     },
     methods : {
         sendCode() {
-            this.$api.project.confirmCode()
+            this.$api.project.confirmCode({email : this.refindInfo.email})
             .then(result => {
                 result = result.data;
                 if(result.code == 0) {
@@ -57,6 +57,10 @@ export default {
                         this.$message.error("验证码过期")
                     return;
                 }
+                this.$message.success("找回密码成功，请重新登陆")
+                setTimeout(function(){
+                    top.document.location.reload();
+                }, 700);
             }).catch(err => {
                 this.$message.error("找回密码错误[服务器异常]")
             })

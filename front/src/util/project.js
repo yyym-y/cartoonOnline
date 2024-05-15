@@ -3,7 +3,8 @@ import request from './request';
 
 export default {
     getMenu, getCarousel, getVideo,
-    logIn, regester, confirmCode, refind
+    logIn, regester, confirmCode, refind,
+    checkJwt
 }
 
 export function getMenu() {
@@ -60,3 +61,10 @@ export function refind(params) {
     })
 }
 
+export function checkJwt(params) {
+    return request({
+        methods:'GET',
+        url:'/user/checkJwt',
+        params: params
+    })
+}
