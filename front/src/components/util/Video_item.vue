@@ -24,10 +24,24 @@ export default {
     methods : {
         jumpTo() {
             if (! this.clickable) return;
+            let type = localStorage.getItem("type")
+            if (type == -1 || type == null) {
+                this.$confirm("你还未登录, 请登录体验完整功能~", "提示", {
+                }).then(()=>{ this.$router.push({ name: "home"}, () => {}) })
+                .catch(()=>{ this.$router.push({ name: "home"}, () => {}) })
+                return;
+            }
+            if (type == 1 && this.baseInfo.cartoonPermit == 1) {
+                this.$confirm("该影片为VIP影片,您是普通用户，请先升级账户~", "提示", {
+                }).then(()=>{ this.$router.push({ name: "home"}, () => {}) })
+                .catch(()=>{ this.$router.push({ name: "home"}, () => {}) })
+                return;
+            }
             this.$router.push({ name:"video", query:{ 
                 cartoonId : this.baseInfo.cartoonId,
                 cartoonName : this.baseInfo.cartoonName,
-                cartoonCover : this.baseInfo.cartoonCover
+                cartoonCover : this.baseInfo.cartoonCover,
+                cartoonPermit : this.baseInfo.cartoonPermit
             } })
         }
     },
@@ -51,9 +65,7 @@ export default {
     font-size: 16px;
     margin-right: 5px;
     margin-top:10px;
-    border-width: 1px;
-    border-style: solid !important;
-    border-color: white
+    background-color: #f7f8f9;
 }
 .name {
     width: 10em;

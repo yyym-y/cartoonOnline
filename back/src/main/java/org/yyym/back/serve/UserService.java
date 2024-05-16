@@ -2,6 +2,7 @@ package org.yyym.back.serve;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
@@ -94,6 +95,23 @@ public class UserService {
                 .set("password", refindInfo.getPassword()));
         if(res == 0)
             return Result.error("email not find");
+        return Result.success();
+    }
+
+    public Result changeUserType(String uid, int type) {
+        int res = userInfoMapper.update(new UpdateWrapper<UserInfo>()
+                .eq("uid", uid).set("type", type));
+        if(res == 0)
+            return Result.error("user not exit");
+        return Result.success();
+    }
+
+    public Result changePassword(String uid, String password, String newPassed) {
+        int res = userInfoMapper.update(new UpdateWrapper<UserInfo>()
+                .eq("uid", uid).eq("password", password)
+                .set("password", newPassed));
+        if(res == 0)
+            return Result.error("uid not exit or passwd wrong");
         return Result.success();
     }
 

@@ -37,4 +37,13 @@ public class UserController {
     public Result checkJwt(String jwt) {
         return userService.checkJwt(jwt);
     }
+    @RequestMapping("/changeUserType")
+    public Result changeUserType(String uid, int type) {
+        return userService.changeUserType(uid, type);
+    }
+    @RequestMapping("/changePassword")
+    public Result changePassword(String uid, String password, String newPwd) {
+        return userService.changePassword(uid, password, newPwd);
+    }
+
 }

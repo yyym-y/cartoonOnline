@@ -4,7 +4,7 @@ import request from './request';
 export default {
     getMenu, getCarousel, getVideo,
     logIn, regester, confirmCode, refind,
-    checkJwt
+    checkJwt, changePassword, changeUserType
 }
 
 export function getMenu() {
@@ -65,6 +65,22 @@ export function checkJwt(params) {
     return request({
         methods:'GET',
         url:'/user/checkJwt',
+        params: params
+    })
+}
+
+export function changeUserType(params) {
+    return request({
+        methods:'GET',
+        url:'/user/changeUserType',
+        params: params
+    })
+}
+
+export function changePassword(params) {
+    return request({
+        methods:'GET',
+        url:'/user/changePassword',
         params: params
     })
 }

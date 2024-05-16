@@ -24,7 +24,6 @@ export default {
     },
     created() {
       EventBus.$on("local_user", (payload) => {
-        console.log(payload)
         this.username = payload.username;
         this.type = payload.type;
       })

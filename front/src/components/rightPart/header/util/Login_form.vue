@@ -55,10 +55,8 @@ export default {
                     return;
                 }
                 result = result.data
-                console.log(result)
                 localStorage.setItem("jwt", result.jwt);
                 localStorage.setItem("username", result.user.username);
-                console.log(localStorage.getItem("username"));
                 localStorage.setItem("uid", result.user.uid);
                 localStorage.setItem("password", result.user.password);
                 localStorage.setItem("email", result.user.email);

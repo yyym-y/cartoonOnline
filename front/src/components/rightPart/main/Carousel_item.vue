@@ -6,7 +6,7 @@
     <img
         class="carousel-img-item"
         :src="absUrl"
-        style="object-fit: cover;"
+        style="object-fit: contain;"
         @click="jumpTo()"
         >
   </div>
@@ -29,14 +29,26 @@ export default {
     },
     mounted() {
         this.absUrl = this.$baseURL + this.baseInfo.carouselCover
-        console.log(this.absUrl)
     },
     methods: {
         jumpTo() {
+            if (localStorage.getItem("type") == -1) {
+                this.$confirm("你还未登录, 请登录体验完整功能~", "提示", {
+                }).then(()=>{ this.$router.push({ name: "home"}, () => {}) })
+                .catch(()=>{ this.$router.push({ name: "home"}, () => {}) })
+                return;
+            }
+            if (localStorage.getItem("type") == 1 && this.baseInfo.cartoon.cartoonPermit == 1) {
+                this.$confirm("该影片为VIP影片,您是普通用户，请先升级账户~", "提示", {
+                }).then(()=>{ this.$router.push({ name: "home"}, () => {}) })
+                .catch(()=>{ this.$router.push({ name: "home"}, () => {}) })
+                return;
+            }
             this.$router.push({ name:"video", query:{ 
-                cartoonId : this.baseInfo.cartoon.cartoonId,
-                cartoonName : this.baseInfo.cartoon.cartoonName,
-                cartoonCover : this.baseInfo.cartoon.cartoonCover
+                cartoonId : this.baseInfo.cartoonId,
+                cartoonName : this.baseInfo.cartoonName,
+                cartoonCover : this.baseInfo.cartoonCover,
+                cartoonPermit : this.baseInfo.cartoonPermit
             } })
         }
     }
