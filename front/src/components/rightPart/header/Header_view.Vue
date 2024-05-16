@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import SearchBar from './util/Search_bar'
-import LoginBtn from './util/Login_btn'
-import UserLink from './util/User_link.vue'
+import SearchBar from '@/components/rightPart/header/search/Search_bar.vue'
+import LoginBtn from '@/components/rightPart/header/user/Login_btn.vue'
+import UserLink from '@/components/rightPart/header/user/User_link.vue'
 import { EventBus } from '@/bus/Event_Bus'
 export default {
     name : "hearder_View",
