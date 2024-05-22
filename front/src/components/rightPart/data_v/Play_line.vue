@@ -40,7 +40,7 @@ export default {
             let myChart = echarts.init(chartDom);
             console.log(Array.from(this.dataTime))
             let option = {
-                animationDuration: 4500,
+                animationDuration: 2500,
                 title: { text: '播放量' },
                 tooltip: {
                     order: 'valueDesc',
