@@ -1,14 +1,17 @@
+<!-- 
+    走马灯中展示的数据
+    传入数据：
+    1. {
+        cartoon : {cartoonId: '', cartoonName: '', cartoonCover: '', cartoonPermit: 0}
+        carouselCover : ''
+    }
+ -->
 <template>
   <div>
-    <VideoItem
-        class="carousel-video-item"
-        :baseInfo="baseInfo.cartoon"></VideoItem>
-    <img
-        class="carousel-img-item"
-        :src="absUrl"
-        style="object-fit: contain;"
-        @click="jumpTo()"
-        >
+    <VideoItem class="carousel-video-item"
+        :cartoonBaseInfo="carouselBaseInfo.cartoon" ref="carousel_item"></VideoItem>
+    <img class="carousel-img-item" :src="absUrl"
+        style="object-fit: contain;" @click="jumpTo()" >
   </div>
   
 </template>
@@ -18,7 +21,7 @@ import VideoItem from '@/components/util/Video_item'
 
 export default {
     name : "Carousel_item",
-    props : ["baseInfo"],
+    props : ["carouselBaseInfo"],
     components : {
         VideoItem
     },
@@ -28,28 +31,11 @@ export default {
         }
     },
     mounted() {
-        this.absUrl = this.$baseURL + this.baseInfo.carouselCover
+        this.absUrl = this.$baseURL + this.carouselBaseInfo.carouselCover
     },
     methods: {
         jumpTo() {
-            if (localStorage.getItem("type") == -1) {
-                this.$confirm("你还未登录, 请登录体验完整功能~", "提示", {
-                }).then(()=>{ this.$router.push({ name: "home"}, () => {}) })
-                .catch(()=>{ this.$router.push({ name: "home"}, () => {}) })
-                return;
-            }
-            if (localStorage.getItem("type") == 1 && this.baseInfo.cartoon.cartoonPermit == 1) {
-                this.$confirm("该影片为VIP影片,您是普通用户，请先升级账户~", "提示", {
-                }).then(()=>{ this.$router.push({ name: "home"}, () => {}) })
-                .catch(()=>{ this.$router.push({ name: "home"}, () => {}) })
-                return;
-            }
-            this.$router.push({ name:"video", query:{ 
-                cartoonId : this.baseInfo.cartoonId,
-                cartoonName : this.baseInfo.cartoonName,
-                cartoonCover : this.baseInfo.cartoonCover,
-                cartoonPermit : this.baseInfo.cartoonPermit
-            } })
+            this.$refs.carousel_item.jumpTo();
         }
     }
 }

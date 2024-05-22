@@ -2,9 +2,7 @@
   <div>
     <el-menu
       default-active="1"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose">
+      class="el-menu-vertical-demo">
 
       <el-menu-item index="1" @click="returnHome()">
         <i class="el-icon-s-home"></i>

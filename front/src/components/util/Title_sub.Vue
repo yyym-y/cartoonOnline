@@ -1,3 +1,8 @@
+<!-- 
+  标题栏， 用于展示一些数据
+  传入数据：
+  1. msg: ''  标题栏上展示的数据
+ -->
 <template>
   <div class="title_sub">
     {{ msg }}

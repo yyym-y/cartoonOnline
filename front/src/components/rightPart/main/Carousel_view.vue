@@ -2,7 +2,7 @@
   <el-carousel height="24em">
     <el-carousel-item v-for="(item, index) in carouselList" :key="item + index">
       <CarouselItem
-        :baseInfo="item"
+        :carouselBaseInfo="item"
       ></CarouselItem>
     </el-carousel-item>
   </el-carousel>

@@ -4,7 +4,8 @@ import request from './request';
 export default {
     getMenu, getCarousel, getVideo,
     logIn, regester, confirmCode, refind,
-    checkJwt, changePassword, changeUserType
+    checkJwt, changePassword, changeUserType,
+    getPlayLineData, search, getDescrip
 }
 
 export function getMenu() {
@@ -82,5 +83,28 @@ export function changePassword(params) {
         methods:'GET',
         url:'/user/changePassword',
         params: params
+    })
+}
+
+export function getPlayLineData() {
+    return request({
+        methods:'GET',
+        url:'/data/getPlayLineData',
+    })
+}
+
+export function search(params) {
+    return request({
+        methods : 'GET',
+        url: '/search/search',
+        params : params
+    })
+}
+
+export function getDescrip(params) {
+    return request({
+        methods : 'GET',
+        url: '/search/getDescrip',
+        params : params
     })
 }

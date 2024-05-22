@@ -42,6 +42,11 @@ export default {
           }
         }).catch(err => {
           this.$message.error("Jwt 令牌失效， 请重新登陆")
+          localStorage.setItem("username", "");
+          localStorage.setItem("jwt", "");
+          localStorage.setItem("uid", "");
+          localStorage.setItem("email", "");
+          localStorage.setItem("type", -1);
         })
       } catch (e) { console.log("jwt get wrong") }
     }

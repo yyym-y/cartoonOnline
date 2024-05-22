@@ -4,7 +4,7 @@
         class="videoItem"
         v-for="(item, index) in itemList"
         :key="index"
-        :baseInfo="item"
+        :cartoonBaseInfo="item"
     ></VideoItem>
     <i v-for="i in 10" :key="i + '<i>'"></i>
   </div>
