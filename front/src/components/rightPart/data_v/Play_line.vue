@@ -31,7 +31,21 @@ export default {
                     type : 'line',
                     stack: 'x',
                     data : this.filterData[id],
-                    name : name
+                    name : name,
+                    endLabel: {
+                        show: true,
+                        formatter: function (params) {
+                            let ori_Name = params.seriesName
+                            if(ori_Name.length > 12) {
+                                ori_Name = params.seriesName.substring(0,12);
+                                ori_Name += "..."
+                            }
+                            return ori_Name
+                        }
+                    },
+                    labelLayout: {
+                        moveOverlap: 'shiftY'
+                    },
                 });
             }
         },
@@ -40,8 +54,7 @@ export default {
             let myChart = echarts.init(chartDom);
             console.log(Array.from(this.dataTime))
             let option = {
-                animationDuration: 2500,
-                title: { text: '播放量' },
+                animationDuration: 1000,
                 tooltip: {
                     order: 'valueDesc',
                     trigger: 'axis'
@@ -51,6 +64,13 @@ export default {
                 },
                 yAxis: {},
                 grid: { right: 140, left:50, top : 70, bottom : 30 },
+                labelLayout: {
+                    moveOverlap: 'shiftY'
+                },
+                tooltip: {
+                    order: 'valueDesc',
+                    trigger: 'axis'
+                },
                 series: this.seriesList
             };
             myChart.setOption(option);
