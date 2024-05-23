@@ -25,6 +25,15 @@ export default {
     components : {
         LeftView, HeaderView
     },
+    methods : {
+      clear() {
+        localStorage.setItem("username", "");
+        localStorage.setItem("jwt", "");
+        localStorage.setItem("uid", "");
+        localStorage.setItem("email", "");
+        localStorage.setItem("type", -1);
+      }
+    },
     mounted() {
       try{
         const jwt = localStorage.getItem("jwt");
@@ -38,17 +47,13 @@ export default {
               email : localStorage.getItem("email"),
               uid : localStorage.getItem("uid"),
               type : localStorage.getItem("type")
-            });
+            }) 
+          } else {
+            this.$message.error("Jwt 令牌失效， 请重新登陆")
+            this.clear();
           }
-        }).catch(err => {
-          this.$message.error("Jwt 令牌失效， 请重新登陆")
-          localStorage.setItem("username", "");
-          localStorage.setItem("jwt", "");
-          localStorage.setItem("uid", "");
-          localStorage.setItem("email", "");
-          localStorage.setItem("type", -1);
-        })
-      } catch (e) { console.log("jwt get wrong") }
+        }).catch(err => { console.log("jwt get wrong"); this.clear();})
+      } catch (e) { console.log("jwt get wrong"); this.clear(); }
     }
 }
 </script>
