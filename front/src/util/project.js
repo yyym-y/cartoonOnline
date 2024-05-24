@@ -5,7 +5,8 @@ export default {
     getMenu, getCarousel, getVideo,
     logIn, regester, confirmCode, refind,
     checkJwt, changePassword, changeUserType,
-    getPlayLineData, search, getDescrip
+    getPlayLineData, search, getDescrip,
+    getMonthPlayData, getYearPlayData, getAllPlayData
 }
 
 export function getMenu() {
@@ -106,5 +107,27 @@ export function getDescrip(params) {
         methods : 'GET',
         url: '/search/getDescrip',
         params : params
+    })
+}
+
+export function getAllPlayData() {
+    return request({
+        methods : 'GET',
+        url: '/data/getAllPlayData'
+    })
+}
+
+export function getYearPlayData(params) {
+    return request({
+        methods : 'GET',
+        url: '/data/getYearPlayData',
+        params : params
+    })
+}
+
+export function getMonthPlayData() {
+    return request({
+        methods : 'GET',
+        url: '/data/getMonthPlayData'
     })
 }

@@ -1,4 +1,5 @@
 import os
+import random
 import namePic
 
 oriDir = "E:/sources/cartoon/"
@@ -17,6 +18,24 @@ def init():
     keyMap["ReLIFE"] = "0bdaac4"
     keyMap["鬼灭之刃"] = "940e098"
     keyMap["青春猪头少年不会梦到兔女郎学姐-剧场版"] = "7f646d5"
+
+def getPlayNum():
+    insert_str = lambda id, year, month, num : 'INSERT INTO play_infos VALUES(\"' + id + '\",' + year + ',' + month + ',' + num + ');\n'
+    with open('./ttt.sql', 'w') as f:
+        for (_, value) in keyMap.items():
+            for i in range(12):
+                f.write(insert_str(value, "2024", str(i + 1), str(random.randint(20, 200))))
+    
+
+def getRamdonPlayNum():
+    insert_str = lambda id, year, month, num : 'INSERT INTO play_infos VALUES(\"' + id + '\",' + year + ',' + month + ',' + num + ');\n'
+    with open('./ttt2.sql', 'w') as ff:
+        for (_, value) in keyMap.items():
+            for i in range(2019, 2024):
+                for j in range(12):
+                    ff.write(insert_str(value, str(i), str(j + 1), str(random.randint(20, 200))))
+
+
 
 def getInsert( cartoonID, num, m3u8Url ):
     ss = 'INSERT INTO m3u8_info VALUES(\"' + cartoonID + '\",\"'
@@ -68,8 +87,8 @@ def getAllInfo():
                         break
                     
 
-
-getAllInfo()
+init()
+getRamdonPlayNum()
 
 
         

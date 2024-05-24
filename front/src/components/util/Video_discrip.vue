@@ -30,7 +30,7 @@ export default {
         this.$api.project.getDescrip({cartoonId : info.cartoonId})
         .then(result => {
             result = result.data;
-            console.log(result)
+            // console.log(result)
             if(result.code == 0) {
                 this.$message.error(info.cartoonName + "简介请求失败...");
                 return;

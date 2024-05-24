@@ -11,4 +11,4 @@ def changeName( path ):
         os.rename( path + "/" + pr, path + "/" + new_name )
     return os.listdir( path )
 
-print(getName(7))
+# print(getName(7))

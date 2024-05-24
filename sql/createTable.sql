@@ -55,11 +55,28 @@ CREATE TABLE code_tem(
     time DateTime NOT NULL COMMENT "创造的时间"
 ) COMMENT "验证码临时表";
 
+# play_infos( cartoon_id[外键],  year, month, play_time )
+CREATE TABLE play_infos(
+    cartoon_id VARCHAR(7) NOT NULL COMMENT "关联cartton表的标识",
+    year INT NOT NULL COMMENT "年份",
+    month INT NOT NULL COMMENT "月份",
+    play_time INT NOT NULL COMMENT "播放量"
+) COMMENT "播放量数据表";
+
+# descrip( cartoon_id[外键], discrip )
+CREATE TABLE descrip(
+    cartoon_id VARCHAR(7) NOT NULL COMMENT "关联cartton表的标识",
+    descrip VARCHAR(500) COMMENT "简介"
+) COMMENT "简介表";
+
+drop TABLE descrip;
+
 SHOW TABLES;
-DROP TABLE code_tem;
+DROP TABLE play_infos;
 
 
 INSERT INTO user_info VALUES("d981034", "admin", "123456", "3109778990@qq.com", 0);
 
 SELECT * FROM user_info;
 SELECT * FROM code_tem;
+
