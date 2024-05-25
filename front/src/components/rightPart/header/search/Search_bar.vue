@@ -1,3 +1,6 @@
+<!-- 
+    搜索框组件
+ -->
 <template>
     <div class="search-bar">
         <el-input v-model="input" @keyup.enter.native="toSearch"

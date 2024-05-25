@@ -1,3 +1,6 @@
+<!-- 
+    注册组件
+ -->
 <template>
   <div>
     <el-form :label-position="'left'" label-width="80px" :model="registerInfo">

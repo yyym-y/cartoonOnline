@@ -1,3 +1,6 @@
+<!-- 
+  顶部导航栏布局
+ -->
 <template>
   <div class="top-head">
     <SearchBar></SearchBar>

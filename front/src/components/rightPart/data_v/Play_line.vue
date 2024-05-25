@@ -1,3 +1,6 @@
+<!-- 
+    影视数据播放量图表
+ -->
 <template>
   <div id="play-line"></div>
 </template>

@@ -1,3 +1,6 @@
+<!-- 
+  登录账户按钮组件
+ -->
 <template>
   <div class="login-btn">
     <el-button type="info" @click="dialogVisible=true" round>登录账户</el-button>

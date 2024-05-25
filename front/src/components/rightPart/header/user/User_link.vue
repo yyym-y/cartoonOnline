@@ -1,3 +1,6 @@
+<!-- 
+    用户标签栏组件
+ -->
 <template>
   <div style="float: right;">
     <el-dropdown  @command="handleCommand">

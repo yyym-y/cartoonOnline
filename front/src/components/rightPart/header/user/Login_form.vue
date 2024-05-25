@@ -1,3 +1,6 @@
+<!-- 
+    登录表格组件
+ -->
 <template>
   <div>
     <el-form :label-position="'left'" label-width="50px" :model="fromInfo">

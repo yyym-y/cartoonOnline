@@ -1,3 +1,6 @@
+<!-- 
+    找回密码组件
+ -->
 <template>
       <el-form :label-position="'left'" label-width="80px" :model="refindInfo">
         <el-form-item label="邮箱">

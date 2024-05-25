@@ -1,3 +1,6 @@
+<!-- 
+  左上角的图标组件
+ -->
 <template>
   <div class="icon-size">
     <el-image

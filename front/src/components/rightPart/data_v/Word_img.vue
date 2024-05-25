@@ -1,3 +1,6 @@
+<!-- 
+    词云图图表
+ -->
 <template>
   <div id="word-img"></div>
 </template>

@@ -1,3 +1,6 @@
+<!-- 
+  用户登录时间图表
+ -->
 <template>
   <div id="login_time"></div>
 </template>

@@ -1,3 +1,6 @@
+<!-- 
+    修改密码表组件
+ -->
 <template>
   <div>
     <el-form :label-position="changePwd" label-width="80px" :model="changePwd">
