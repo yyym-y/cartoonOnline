@@ -1,6 +1,6 @@
 <template>
     <div class="search-bar">
-        <el-input v-model="input"
+        <el-input v-model="input" @keyup.enter.native="toSearch"
             placeholder="请输入要搜索的内容, 宁可少字也不要错字喵~~" class="search-input"></el-input>
         <el-button plain class="search-but" @click="toSearch">
             <i class="el-icon-search"></i>搜索

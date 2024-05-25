@@ -21,17 +21,17 @@ export default {
             let id_map = new Map();
             echarts.util.each(res, (item) => {
                 if(! this.filterData[item.cartoonId])
-                this.filterData[item.cartoonId] = []
+                    this.filterData[item.cartoonId] = []
                 this.filterData[item.cartoonId].push(item.playTime);
-                id_map.set(item.cartoonId, item.cartoonName);
+                id_map.set(item.cartoonId, item.cartoon);
                 this.dataTime.add(String(item.year) + "-" + String(item.month));
             })
-            for (let [id, name] of id_map.entries()) {
+            for (let [id, item] of id_map.entries()) {
                 this.seriesList.push({
                     type : 'line',
                     stack: 'x',
                     data : this.filterData[id],
-                    name : name,
+                    name : item.cartoonName,
                     endLabel: {
                         show: true,
                         formatter: function (params) {

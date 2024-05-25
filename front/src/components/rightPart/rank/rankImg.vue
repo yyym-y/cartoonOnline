@@ -1,5 +1,5 @@
 <template>
-    <div id="rankListImg">
+    <div id="rankListImg" ref="imgDiv">
     </div>
 </template>
 
@@ -24,8 +24,9 @@ export default {
             this.xData.reverse();
         },
         initChart() {
-            var chartDom = document.getElementById('rankListImg');
+            var chartDom = this.$refs.imgDiv;
             chartDom.style.height = String(55 * this.data.length) + 'px';
+            chartDom.style.width = '90vw';
             this.myChart = echarts.init(chartDom);
             this.initData();
             var option = {
@@ -49,6 +50,7 @@ export default {
             this.myChart.setOption(option);
             window.addEventListener('resize', () => {
                 chartDom.style.height = String(55 * this.data.length) + 'px';
+                chartDom.style.width = '90vw';
                 this.myChart.resize();
             });
         }
@@ -68,7 +70,7 @@ export default {
 
 
 <style scoped>
-#rankListImg {
+/* #rankListImg {
     width: 100%;
-}
+} */
 </style>

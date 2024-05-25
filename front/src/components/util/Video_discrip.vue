@@ -5,8 +5,8 @@
  -->
 <template>
   <div class="descrip-item">
-    <videoItem :cartoonBaseInfo="cartoonBaseInfo" class="videoItem" :ifShowName="false"></videoItem>
-    <div class="descrip">
+    <videoItem :cartoonBaseInfo="cartoonBaseInfo" class="videoItem" :ifShowName="false" ref="cortoonImg"></videoItem>
+    <div class="descrip" @click="jumpTo" >
         <div class="cartoonName">{{ cartoonBaseInfo.cartoonName }}</div>
         <div class="cartoonDescrip">{{ descrip }}</div>
     </div>
@@ -24,6 +24,11 @@ export default {
     },
     data() {
         return { descrip : "" }
+    },
+    methods : {
+        jumpTo() {
+            this.$refs.cortoonImg.jumpTo()
+        }
     },
     mounted() {
         let info = this.cartoonBaseInfo;

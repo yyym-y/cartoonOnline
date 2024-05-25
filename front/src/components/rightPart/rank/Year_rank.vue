@@ -1,13 +1,12 @@
 <template>
   <div>
     <el-date-picker v-model="choiceYear" style="height: 100%;"
-      type="year" placeholder="选择展示哪一年热榜"></el-date-picker>
+      type="year" placeholder="选择展示哪一年热榜" value-format="yyyy"></el-date-picker>
       <el-button @click="queryData">确认</el-button>
 
     <el-tabs :tab-position="'top'">
         <el-tab-pane label="图表">
-          <!-- <RankImg :data="rankInfo" :title="choiceYear + '年年度排行'"></RankImg> -->
-          <RankImg :data="rankInfo" :title="'全部影视排行'"></RankImg>
+          <RankImg :data="rankInfo" :title="choiceYear + '年度影视排行'"></RankImg>
         </el-tab-pane>
         <el-tab-pane label="列表">
           <VideoDiscrip v-for="(pr, index) in rankInfo" :key="'yearrank' + index"
@@ -27,7 +26,7 @@ export default {
     data() {
         return {
             choiceYear : '',
-            rankInfo : []
+            rankInfo : [],
         }
     },
     methods : {
@@ -44,6 +43,10 @@ export default {
           res.sort(function(a, b) {
             return b.playTime - a.playTime;
           })
+          if(res.length == 0) {
+            this.$message.error("没有" + this.choiceYear +  "年的数据...");
+            return;
+          }
           this.rankInfo = res;
         }).catch(err => {this.$message.error(this.choiceYear +  "排行数据请求失败....");})
       }

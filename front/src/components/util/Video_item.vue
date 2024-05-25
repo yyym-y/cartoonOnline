@@ -45,15 +45,22 @@ export default {
             console.log(type)
 
             this.$router.push({ name:"video", query: {cartoonBaseInfo : this.cartoonBaseInfo} })
+        },
+        initInfo() {
+            if (this.cartoonBaseInfo.cartoonName.length > 10) {
+                this.show_name = this.cartoonBaseInfo.cartoonName.substring(0, 15);
+                this.show_name += "..."
+            } else this.show_name = this.cartoonBaseInfo.cartoonName
+            this.absUrl = this.$baseURL + this.cartoonBaseInfo.cartoonCover;
+        }
+    },
+    watch: {
+        cartoonBaseInfo() {
+            this.initInfo();
         }
     },
     mounted() {
-        // 修剪影视名
-        if (this.cartoonBaseInfo.cartoonName.length > 10) {
-            this.show_name = this.cartoonBaseInfo.cartoonName.substring(0, 15);
-            this.show_name += "..."
-        } else this.show_name = this.cartoonBaseInfo.cartoonName
-        this.absUrl = this.$baseURL + this.cartoonBaseInfo.cartoonCover;
+        this.initInfo();
     }
 }
 </script>
