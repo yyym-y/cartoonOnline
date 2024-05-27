@@ -12,6 +12,7 @@
 
 <script>
 import VideoItem from '@/components/util/Video_item'
+import { EventBus } from '@/bus/Event_Bus'
 export default {
     name : "Total_Menu",
     components : {
@@ -22,16 +23,9 @@ export default {
         itemList : []
       }
     },
-    mounted() {
-      this.$api.project.getMenu().then((result) => {
-        result = result.data;
-        if(result.code == 0) {
-          this.$message.error('服务器连接成功,走马灯数据请求失败');
-          return;
-        }
-        this.itemList = result.data
-      }).catch(err => {
-        this.$message.error('服务器连接失败...');
+    created() {
+      EventBus.$on("menuBarChange", (payload) => {
+        this.itemList = payload
       })
     }
 }

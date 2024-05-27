@@ -6,6 +6,7 @@
  -->
 <template>
   <div class="video-item">
+    <span class="video-type">{{ video_type }}</span>
     <img class="imgItem" :src="absUrl" @click="jumpTo()" >
     <div class="name" @click="jumpTo()" v-if="ifShowName">{{ show_name }}</div>
   </div>
@@ -23,7 +24,8 @@ export default {
     data() {
         return {
             show_name : "",
-            absUrl : ""
+            absUrl : "",
+            video_type : "VIP"
         }
     },
     methods : {
@@ -52,6 +54,9 @@ export default {
                 this.show_name += "..."
             } else this.show_name = this.cartoonBaseInfo.cartoonName
             this.absUrl = this.$baseURL + this.cartoonBaseInfo.cartoonCover;
+            if(this.cartoonBaseInfo.cartoonPermit == 1)
+                this.video_type = "VIP"
+            else this.video_type = ""
         }
     },
     watch: {
@@ -65,7 +70,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .video-item {
     width: 10em;
     max-width: 270px;
@@ -84,5 +89,12 @@ export default {
 }
 .imgItem {
     width: 100%; border-radius: 4px;
+}
+.video-type{
+    background-color: yellow;
+    font-size: 13px;
+    position:absolute;
+    padding-right: 2px;
+    padding-left: 2px;
 }
 </style>
