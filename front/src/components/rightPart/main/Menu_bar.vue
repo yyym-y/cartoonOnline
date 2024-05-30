@@ -38,79 +38,137 @@ export default {
         pay : "all",
         area : [],
         tags : []
-      }
+      },
+      setOneGet : null,
+      fliterOri : [],
+      send_arr : []
     }
   },
   methods : {
     handleClose(choice) {
-        console.log(choice)
         switch(choice.belong) {
           case "pay": {
             this.forms.pay = "all"
             break;
           }
           case "area": {
-            console.log(this.forms.area.indexOf(choice.name))
             this.forms.area.splice(this.forms.area.indexOf(choice.name), 1)
-            console.log("----", this.forms.area)
             break;
           }
-          case "tags": {
+          case "tag": {
+            this.forms.tags.splice(this.forms.tags.indexOf(choice.name), 1)
             break;
           }
         }
-        //this.choices.splice(this.choices.indexOf(choice), 1);
     },
+    RankByPlatTime() {
+      let final_ori = this.fliterOri;
+      if(this.value) {
+        final_ori.sort(function(a, b) {
+          return b.playTime - a.playTime;
+        })
+      }
+      this.send_arr = []
+      final_ori.forEach(element => {
+        this.send_arr.push(element.cartoon)
+      })
+    },
+    changeMenu() {
+      this.$api.project.getTagMenu(this.choices).then((result) => {
+        result = result.data
+        console.log("result", result);
+        if(result.code == 0) {
+          this.$message.error('一些莫名其妙的错误发生了...'); return;
+        }
+        this.fliterOri = [];
+        for(let i = 0 ; i < result.data.length ; i++) {
+          let element = result.data[i];
+          if(this.forms.pay != "all") {
+            if(this.forms.pay == "VIP" && element.cartoon.cartoonPermit == 0)
+              continue;
+            if(this.forms.pay == "免费" && element.cartoon.cartoonPermit == 1)
+              continue;
+          }
+          this.fliterOri.push(element);
+        }
+        this.RankByPlatTime();
+        console.log(this.send_arr)
+        EventBus.$emit("menuBarChange", this.send_arr);
+      }).catch(err => {
+        this.$message.error('服务器连接失败...');
+      })
+    }
   },
   created() {
-    this.$api.project.getMenu().then((result) => {
-      result = result.data;
-      if(result.code == 0) {
-        this.$message.error('服务器连接成功,列表数据请求失败');
-        return;
-      }
-      EventBus.$emit("menuBarChange", result.data);
-    }).catch(err => {
-      this.$message.error('服务器连接失败...');
-    })
+    let _ = require('lodash')
+    this.setOneGet = _.debounce(this.changeMenu, 500);
+    this.changeMenu();
   },
-  watch : {
-    'forms.pay'(newV, oldV) {
-        this.choices.splice(this.choices.indexOf({name : oldV}), 1);
-        if(newV != "all")
-          this.choices.push({name : newV, belong : "pay"})
+  computed: {
+    computedArea() {
+      return [...this.forms.area];
     },
-    'forms.area'(newV, oldV) {
-      console.log("new", newV);
-      console.log("old", oldV);
-      //if(newV.length == oldV.length) return;
-      if(newV.length > oldV.length) {
-        newV.forEach(element => {
-          if(oldV.indexOf(element) == -1)
-            this.choices.push({name : element, belong : "area"})
-        });
-      } else {
-        oldV.forEach(element => {
-          if(newV.indexOf(element) == -1)
-            this.choices.splice(this.choices.indexOf({name : element, belong : "area"}), 1);
-        })
-      }
-    },
-    'forms.tags'(newV, oldV) {
-      //if(newV.length == oldV.length) return;
-      if(newV.length > oldV.length) {
-        newV.forEach(element => {
-          if(oldV.indexOf(element) == -1)
-            this.choices.push({name : element, belong : "tags"})
-        });
-      } else {
-        oldV.forEach(element => {
-          if(newV.indexOf(element) == -1)
-            this.choices.splice(this.choices.indexOf({name : element, belong : "tags"}), 1);
-        })
-      }
+    computedTags() {
+      return [...this.forms.tags];
     }
-  }
+  },
+  watch: {
+    'forms.pay'(newV, oldV) {
+      if (oldV !== "all") {
+        const index = this.choices.findIndex(c => c.name === oldV && c.belong === "pay");
+        if (index !== -1) this.choices.splice(index, 1);
+      }
+      if (newV !== "all") {
+        this.choices.push({ name: newV, belong: "pay", tagId : -1});
+      }
+      this.setOneGet();
+    },
+    computedArea : {
+      handler: function(newV, oldV) {
+        if (newV.length > oldV.length) {
+          newV.forEach(element => {
+            if (!oldV.includes(element)) {
+              this.choices.push({ name: element, belong: "area", tagId : -1});
+            }
+          });
+        } else {
+          oldV.forEach(element => {
+            if (!newV.includes(element)) {
+              const index = this.choices.findIndex(c => c.name === element && c.belong === "area");
+              if (index !== -1) this.choices.splice(index, 1);
+            }
+          });
+        }
+        this.setOneGet();
+      },
+      deep: true
+    },
+    computedTags : {
+      handler: function(newV, oldV) {
+        if (newV.length > oldV.length) {
+          newV.forEach(element => {
+            if (!oldV.includes(element)) {
+              this.choices.push({ name: element, belong: "tag", tagId : -1});
+            }
+          });
+        } else {
+          oldV.forEach(element => {
+            if (!newV.includes(element)) {
+              const index = this.choices.findIndex(c => c.name === element && c.belong === "tag");
+              if (index !== -1) this.choices.splice(index, 1);
+            }
+          });
+        }
+        this.setOneGet();
+      },
+      deep: true
+    },
+    value() {
+      this.RankByPlatTime();
+      EventBus.$emit("menuBarChange", this.send_arr);
+    }    
+  },
+
 }
 </script>
 

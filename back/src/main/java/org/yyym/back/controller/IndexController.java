@@ -1,11 +1,12 @@
 package org.yyym.back.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.yyym.back.serve.IndexService;
+import org.yyym.back.util.entity.Tag;
 import org.yyym.back.util.helper.Result;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(originPatterns = "*",allowCredentials = "true")
@@ -21,5 +22,10 @@ public class IndexController {
     @RequestMapping("/getCarousel")
     public Result getCarousel() {
         return indexService.getCarousel();
+    }
+
+    @RequestMapping(value = "/getTagMenu", method = RequestMethod.POST)
+    public Result getTagMenu(@RequestBody List<Tag> choices) {
+        return indexService.getTagMenu(choices);
     }
 }

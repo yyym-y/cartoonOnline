@@ -69,7 +69,18 @@ CREATE TABLE descrip(
     descrip VARCHAR(500) COMMENT "简介"
 ) COMMENT "简介表";
 
-drop TABLE descrip;
+CREATE TABLE tag_group(
+    tag_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT COMMENT "tag id",
+    type VARCHAR(15) NOT NULL COMMENT "标识标签的类别",
+    name VARCHAR(20) NOT NULL COMMENT "标签具体的名字"
+) COMMENT "标签类别表";
+
+CREATE TABLE category(
+    cartoon_id VARCHAR(7) NOT NULL COMMENT "关联cartton表的标识",
+    tag_id INT NOT NULL COMMENT "tag 标签id"
+) COMMENT "影视-标签";
+
+drop TABLE category;
 
 SHOW TABLES;
 DROP TABLE play_infos;
@@ -79,4 +90,6 @@ INSERT INTO user_info VALUES("d981034", "admin", "123456", "3109778990@qq.com", 
 
 SELECT * FROM user_info;
 SELECT * FROM code_tem;
+
+
 

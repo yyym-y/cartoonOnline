@@ -43,4 +43,7 @@ public interface PlayInfoMapper extends BaseMapper<PlayInfo> {
                     one = @One(select = "org.yyym.back.mapper.CartoonMapper.selectById"))
     })
     List<PlayInfo> getYearPlayData(String year);
+
+    @Select("SELECT sum(play_time) as playTime FROM play_infos WHERE cartoon_id = #{cartoonId}")
+    Integer getExtraPlayTime(@Param("cartoonId") String cartoonId);
 }

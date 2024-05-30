@@ -6,7 +6,8 @@ export default {
     logIn, regester, confirmCode, refind,
     checkJwt, changePassword, changeUserType,
     getPlayLineData, search, getDescrip,
-    getMonthPlayData, getYearPlayData, getAllPlayData
+    getMonthPlayData, getYearPlayData, getAllPlayData,
+    getTagMenu
 }
 
 export function getMenu() {
@@ -129,5 +130,13 @@ export function getMonthPlayData() {
     return request({
         methods : 'GET',
         url: '/data/getMonthPlayData'
+    })
+}
+
+export function getTagMenu(params) {
+    return request({
+        method : 'POST',
+        url: '/index/getTagMenu',
+        data : params
     })
 }

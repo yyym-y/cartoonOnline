@@ -66,3 +66,39 @@ INSERT INTO descrip VALUES("af1de92",
 
 
 SELECT cartoon_id, year, sum(play_time) FROM play_infos WHERE year = 2024 GROUP BY cartoon_id;
+
+SELECT * FROM tag_group;
+
+INSERT INTO tag_group(type, name) VALUES("tag", "恋爱");
+INSERT INTO tag_group(type, name) VALUES("tag", "喜剧");
+INSERT INTO tag_group(type, name) VALUES("tag", "动作");
+INSERT INTO tag_group(type, name) VALUES("tag", "搞笑");
+INSERT INTO tag_group(type, name) VALUES("area", "内地");
+INSERT INTO tag_group(type, name) VALUES("area", "中国台湾");
+INSERT INTO tag_group(type, name) VALUES("area", "中国香港");
+INSERT INTO tag_group(type, name) VALUES("area", "日本");
+
+INSERT category VALUES ("53c3270", 1);
+INSERT category VALUES ("53c3270", 2);
+INSERT category VALUES ("53c3270", 4);
+INSERT category VALUES ("53c3270", 8);
+
+
+INSERT category VALUES ("32c8841", 2);
+INSERT category VALUES ("32c8841", 3);
+INSERT category VALUES ("32c8841", 8);
+
+
+INSERT category VALUES ("4dc2dd8", 1);
+INSERT category VALUES ("4dc2dd8", 2);
+INSERT category VALUES ("4dc2dd8", 3);
+INSERT category VALUES ("4dc2dd8", 4);
+INSERT category VALUES ("4dc2dd8", 8);
+
+
+INSERT category VALUES ("940e098", 2);
+INSERT category VALUES ("940e098", 3);
+INSERT category VALUES ("940e098", 4);
+INSERT category VALUES ("940e098", 8);
+
+SELECT * FROM 
