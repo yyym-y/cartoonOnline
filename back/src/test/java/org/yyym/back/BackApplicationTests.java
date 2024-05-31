@@ -28,7 +28,7 @@ class BackApplicationTests {
 
 	@Test
 	void testDataGetYear() {
-		System.out.println(cartoonMapper.selectAll());
+		System.out.println(playInfoMapper.selectList());
 	}
 
 }
