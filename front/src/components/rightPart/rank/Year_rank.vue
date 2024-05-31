@@ -12,6 +12,9 @@
           <VideoDiscrip v-for="(pr, index) in rankInfo" :key="'yearrank' + index"
             :cartoonBaseInfo="pr.cartoon"></VideoDiscrip>
         </el-tab-pane>
+        <el-tab-pane label="导出">
+          <el-button @click="download()">点击导出为 Excel 表格</el-button>
+        </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -49,6 +52,9 @@ export default {
           }
           this.rankInfo = res;
         }).catch(err => {this.$message.error(this.choiceYear +  "排行数据请求失败....");})
+      },
+      download() {
+        window.open(this.$baseURL +'/download/getYearWorkbook?year=' + this.choiceYear)
       }
     },
     created() {

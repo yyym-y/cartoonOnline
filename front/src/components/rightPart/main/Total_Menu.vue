@@ -1,5 +1,7 @@
 <template>
   <div class="total-menu">
+    <el-empty v-if="itemList == null || itemList.length == 0" 
+      description="没有找到相关的内容哦" style="width: 100%;"></el-empty>
     <VideoItem
         class="videoItem"
         v-for="(item, index) in itemList"

@@ -8,6 +8,9 @@
             <VideoDiscrip v-for="(pr, index) in rankInfo" :key="'monthrank' + index"
                 :cartoonBaseInfo="pr.cartoon"></VideoDiscrip>
             </el-tab-pane>
+            <el-tab-pane label="导出">
+              <el-button @click="download()">点击导出为 Excel 表格</el-button>
+            </el-tab-pane>
         </el-tabs>
     </div>
 </template>
@@ -41,6 +44,11 @@ export default {
         })
         this.rankInfo = res;
       }).catch(err => {this.$message.error("本月排行数据请求失败....");})
+    },
+    methods : {
+      download() {
+        window.open(this.$baseURL +'/download/getMonthRankWorkbook')
+      }
     }
 }
 </script>

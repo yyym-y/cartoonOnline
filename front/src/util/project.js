@@ -7,7 +7,7 @@ export default {
     checkJwt, changePassword, changeUserType,
     getPlayLineData, search, getDescrip,
     getMonthPlayData, getYearPlayData, getAllPlayData,
-    getTagMenu
+    getTagMenu, pay
 }
 
 export function getMenu() {
@@ -138,5 +138,13 @@ export function getTagMenu(params) {
         method : 'POST',
         url: '/index/getTagMenu',
         data : params
+    })
+}
+
+export function pay(params) {
+    return request({
+        method : 'GET',
+        url: '/alipay/pay',
+        params : params
     })
 }
