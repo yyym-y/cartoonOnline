@@ -80,7 +80,17 @@ CREATE TABLE category(
     tag_id INT NOT NULL COMMENT "tag 标签id"
 ) COMMENT "影视-标签";
 
-drop TABLE category;
+CREATE TABLE orders(
+    order_id VARCHAR(40) PRIMARY KEY NOT NULL UNIQUE COMMENT "订单编号",
+    uid VARCHAR(7) NOT NULL COMMENT "用户唯一标识",
+    buyer_id VARCHAR(40) COMMENT "买家在支付宝唯一id",
+    buyer_pay_amount INT COMMENT "买家付款金额",
+    trade_no VARCHAR(40) COMMENT "支付宝交易凭证号",
+    gmt_payment DATETIME COMMENT "买家付款时间",
+    order_create DATETIME COMMENT "创建订单时间"
+) COMMENT "订单表";
+
+drop TABLE orders;
 
 SHOW TABLES;
 DROP TABLE play_infos;

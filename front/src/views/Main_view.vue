@@ -1,10 +1,12 @@
 <template>
-  <div>
+  <div class="menu-outter">
     <Carousel></Carousel>
     <TitleSub :msg="'全部影视目录'"></TitleSub>
     <MenuBar></MenuBar>
     <el-divider></el-divider>
     <TotalMenu></TotalMenu>
+    <el-pagination layout="prev, pager, next" :total="1" class="pageSelect"
+    background="#f7f8f9"></el-pagination>
   </div>
 </template>
 
@@ -21,6 +23,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped >
+.pageSelect {
+  margin-top: 20px;
+  margin-left: 36vw;
+}
 </style>
