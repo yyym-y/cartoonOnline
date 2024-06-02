@@ -5,6 +5,7 @@ import videoView from '@/views/Video_view.vue'
 import DataView from '@/views/Data_view.vue'
 import RankView from '@/views/Rank_view.vue'
 import SearchView from '@/views/Search_view.vue'
+import AdminView from '@/views/Admin_view.vue'
 
 Vue.use(VueRouter)
 
@@ -17,6 +18,7 @@ const routes = [
     path: '/search', name: "search", component: SearchView,
     meta: { keepAlive: true }
   },
+  { path: '/admin', name: "admin", component: AdminView },
 ]
 
 const router = new VueRouter({

@@ -9,7 +9,7 @@
         </span>
         <el-dropdown-menu>
             <el-dropdown-item command="updatetype" v-if="type == 1">升级账户</el-dropdown-item>
-            <el-dropdown-item v-if="type == 0">控制台</el-dropdown-item>
+            <el-dropdown-item v-if="type == 0" command="admin">控制台</el-dropdown-item>
             <el-dropdown-item command="changepwd">修改密码</el-dropdown-item>
             <el-dropdown-item command="exit">退出登录</el-dropdown-item>
         </el-dropdown-menu>
@@ -54,7 +54,11 @@ export default {
                 case "exit": {this.exitLog(); break;}
                 case "changepwd": {this.changepwd = true; break;}
                 case "updatetype": {this.updatetype = true; break;}
+                case "admin": {this.jumpToAdmin(); break;}
             }
+        },
+        jumpToAdmin() {
+            this.$router.push({name : "admin"}).catch(err => {})
         }
     },
     created() {

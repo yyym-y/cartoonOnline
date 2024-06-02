@@ -7,7 +7,7 @@ export default {
     checkJwt, changePassword, changeUserType,
     getPlayLineData, search, getDescrip,
     getMonthPlayData, getYearPlayData, getAllPlayData,
-    getTagMenu, pay
+    getTagMenu, pay, getAllTableInfos
 }
 
 export function getMenu() {
@@ -146,5 +146,12 @@ export function pay(params) {
         method : 'GET',
         url: '/alipay/pay',
         params : params
+    })
+}
+
+export function getAllTableInfos() {
+    return request({
+        method : 'GET',
+        url: 'admin/getAllTableInfos',
     })
 }
