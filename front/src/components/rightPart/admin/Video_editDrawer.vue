@@ -25,7 +25,7 @@
                 </el-input>
             </el-form-item>
             <el-form-item label="每集信息管理">
-                <EposodeAdder></EposodeAdder>
+                <EposodeAdder :cartoonId="form.cartoonId"></EposodeAdder>
                 <EditEpisode v-for="(pr, index) in form.episodeInfos" :key="'editEpisode' + pr + index"
                     :num="pr.num" :abs_url="pr.m3u8_url"></EditEpisode>
             </el-form-item>
