@@ -3,8 +3,8 @@
     <el-button type="primary" icon="el-icon-edit" @click="dialogVisible = true"
         size="medium" style="margin-bottom: 8px;"> 添加影视</el-button>
 
-    <el-dialog title="添加影视" :visible.sync="dialogVisible" width="44%">
-
+    <el-dialog title="添加影视" :visible.sync="dialogVisible" width="44%" append-to-body>
+        
     </el-dialog>
   </div>
 </template>

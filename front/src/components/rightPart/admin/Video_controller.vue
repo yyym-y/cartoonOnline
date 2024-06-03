@@ -53,11 +53,17 @@
             </template>     
         </el-table-column>
     </el-table>
+    <VideoEditDrawer></VideoEditDrawer>
   </div>
 </template>
 
 <script>
+import VideoEditDrawer from './Video_editDrawer.vue';
+import { EventBus } from '@/bus/Event_Bus'
 export default {
+    components : {
+        VideoEditDrawer
+    },
     data() {
         return {
             search : "",
@@ -66,7 +72,7 @@ export default {
     },
     methods : {
         handleEdit(index, row) {
-            console.log(index, row);
+            EventBus.$emit("VideoEdit", { row: JSON.parse(JSON.stringify(row)) })
         },
         handleDelete(index, row) {
             console.log(index, row);
