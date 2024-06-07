@@ -25,9 +25,12 @@ public class SearchService {
         List<Cartoon> findByName = cartoonMapper.selectList(
                 new QueryWrapper<Cartoon>().like("cartoon_name", input));
         if(findByName != null && ! findByName.isEmpty()) isFind = true;
+        List<Cartoon> findByEditor = cartoonMapper.selectEdit(input);
+        if(findByEditor != null && ! findByEditor.isEmpty()) isFind = true;
         if(! isFind)
             return Result.error("do find any useful info");
         res.put("cartoon_name", findByName);
+        res.put("director", findByEditor);
         return Result.success(res);
     }
 

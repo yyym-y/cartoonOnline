@@ -13,7 +13,7 @@ import hls from "videojs-contrib-hls"
 import VueRouter from 'vue-router'
 import router from "./router/index"
  
-Vue.prototype.$baseURL = "http://10.252.118.173:8888"
+Vue.prototype.$baseURL = "http://localhost:8888"
 
 Vue.prototype.$api = api
 Vue.prototype.$axios = axios

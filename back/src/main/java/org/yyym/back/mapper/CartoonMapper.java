@@ -20,4 +20,10 @@ public interface CartoonMapper extends BaseMapper<Cartoon> {
                     one = @One(select = "org.yyym.back.mapper.multi.PlayInfoMapper.getExtraPlayTime")),
     })
     List<Category_s> selectAll();
+
+    @Select("SELECT DISTINCT * FROM cartoon LEFT JOIN category " +
+            "ON cartoon.cartoon_id = category.cartoon_id " +
+            "LEFT JOIN tag_group ON category.tag_id = tag_group.tag_id " +
+            "WHERE tag_group.type = 'editor' AND tag_group.name LIKE concat('%', #{input}, '%');")
+    List<Cartoon> selectEdit(String input);
 }

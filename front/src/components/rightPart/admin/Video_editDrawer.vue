@@ -1,3 +1,7 @@
+<!-- 
+    编辑某个影视选项的抽屉框选项:
+    监听事件
+-->
 <template>
   <div>
     <el-drawer
@@ -34,6 +38,7 @@
             </el-form-item>
         </el-form>
     </el-drawer>
+    <SaveChange></SaveChange>
   </div>
 </template>
 
@@ -43,9 +48,10 @@ import UploadCover from './Upload_cover.vue'
 import TagAdder from './Tag_adder.vue'
 import EditEpisode from './Edit_episode.vue';
 import EposodeAdder from './Episode_adder.vue'
+import SaveChange from './Save_change.vue';
 export default {
     components : {
-        UploadCover, TagAdder, EditEpisode, EposodeAdder
+        UploadCover, TagAdder, EditEpisode, EposodeAdder, SaveChange
     },
     data() {
         return {
@@ -62,17 +68,40 @@ export default {
             }).catch(_ => {});
         },
         onSubmit() {
-
+            EventBus.$emit("saveChange", {
+                ori_form : this.ori_info,
+                final_form : this.form
+            })
+            console.log("submit")
         }
     },
     created() {
         EventBus.$on("VideoEdit", (payload) => {
-            console.log("----", payload.row)
             this.ori_info = payload.row
-            this.form = payload.row
+            this.form = JSON.parse(JSON.stringify(payload.row))
             this.imgUrl = this.$baseURL + payload.row.cartoonCover
             this.title = "编辑影视 " + payload.row.cartoonId + ":"
             this.drawer = true
+        })
+        EventBus.$on("uploadVideoReturn", (payload) => {
+            if(payload.type == "new") {
+                let arr = this.form.episodeInfos;
+                console.log(this.form)
+                for(let i = 0 ; i < arr.length ; i ++) {
+                    console.log("---))",arr, i, arr[i].num, payload.num, arr[i].num == payload.num)
+                    if(arr[i].num == payload.num) {
+                        this.$message.error("该集资源已存在...");
+                        return;
+                    }
+                }
+                let type_str = payload.localImport ? "new_local" : "new_internet";
+                this.form.episodeInfos.push({
+                    num : payload.num,
+                    type : type_str,
+                    m3u8_url : payload.realUrl
+                })
+                this.$message.success("添加成功");
+            }
         })
     }
 }

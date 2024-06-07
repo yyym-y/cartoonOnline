@@ -101,4 +101,22 @@ INSERT category VALUES ("940e098", 3);
 INSERT category VALUES ("940e098", 4);
 INSERT category VALUES ("940e098", 8);
 
-SELECT * FROM 
+INSERT tag_group(type, name) VALUES("editor", "新海诚");
+
+SELECT * FROM tag_group;
+
+INSERT category VALUES("af1de92", 9);
+INSERT category VALUES("e28e44d", 9);
+
+SELECT DISTINCT * FROM cartoon LEFT JOIN category
+    ON cartoon.cartoon_id = category.cartoon_id
+    LEFT JOIN tag_group ON category.tag_id = tag_group.tag_id
+    WHERE tag_group.type = 'editor' AND tag_group.name LIKE '%新海诚%';
+
+
+INSERT INTO cartoon VALUES("c1d94e6","特殊影视","/cover/c1d94e69be06490a90faef537.png",0);
+INSERT INTO cartoon VALUES("abb6c89","特殊影视","/cover/abb6c89a796a4fdba3265b3a5.png",0);
+INSERT INTO cartoon VALUES("b64efe3","特殊影视","/cover/b64efe3713114c05af8f72c98.png",0);
+INSERT INTO cartoon VALUES("5cd9b42","特殊影视","/cover/5cd9b426ee004710ae1b1ab3a.png",0);
+INSERT INTO cartoon VALUES("b853e41","特殊影视","/cover/b853e412f4a64439b8fc0284c.png",0);
+INSERT INTO cartoon VALUES("ab4380b","特殊影视","/cover/ab4380b44ea744beb2b2f1f2e.png",0);

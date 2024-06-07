@@ -42,7 +42,8 @@ class BackApplicationTests {
 
 	@Test
 	void test() {
-		System.out.println(tagMapper.selectByTagId(1));
+		System.out.println(cartoonMapper.selectEdit("新"));
 	}
+
 
 }

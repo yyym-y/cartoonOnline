@@ -102,4 +102,6 @@ SELECT * FROM user_info;
 SELECT * FROM code_tem;
 
 
+INSERT INTO cartoon VALUES()
+
 

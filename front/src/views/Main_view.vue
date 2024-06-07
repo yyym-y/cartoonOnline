@@ -5,8 +5,6 @@
     <MenuBar></MenuBar>
     <el-divider></el-divider>
     <TotalMenu></TotalMenu>
-    <el-pagination layout="prev, pager, next" :total="1" class="pageSelect"
-    background="#f7f8f9"></el-pagination>
   </div>
 </template>
 
